@@ -982,6 +982,96 @@ h4,
     opacity: 0.4;
 }
 
+/* HAMBURGER STYLES */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2000;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 2px;
+    background: white;
+    transition: all 0.3s;
+}
+
+.navbar.scrolled .hamburger span {
+    background: var(--primary);
+}
+
+/* ===== ABOUT CAROUSEL ===== */
+.about-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.about-carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.about-slide {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Arrows */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.4);
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.carousel-btn.prev {
+    left: 15px;
+}
+
+.carousel-btn.next {
+    right: 15px;
+}
+
+/* Dots */
+.carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.carousel-dots span {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.carousel-dots .active {
+    background: var(--accent);
+}
+.carousel-btn:hover {
+    background: rgba(0,0,0,0.7);
+}
+
 /* ============================================
    RESPONSIVE OVERHAUL (MOBILE & TABLET)
    ============================================ */
@@ -1001,7 +1091,7 @@ h4,
     }
 
     .heart-visual {
-        display: none;
+        display: none !important;
     }
 
     /* Hide heavy image on small dynamic viewports */
@@ -1029,6 +1119,63 @@ h4,
         grid-template-columns: 1fr;
         gap: 60px;
     }
+
+    .hero-headline {
+        font-size: 48px;
+    }
+
+    .editorial-h {
+        font-size: 36px;
+    }
+
+    .heart-p {
+        font-size: 17px;
+    }
+
+    /* Navbar Trigger */
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex !important; /* Force visibility when query matches */
+        position: relative;
+        z-index: 2100;
+    }
+
+    .nav-brand {
+        max-width: 70%;
+    }
+
+
+    .nav-links.active {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--primary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        z-index: 1500;
+    }
+
+    .nav-links.active .n-link,
+    .nav-links.active .btn-cta {
+        font-size: 24px;
+        color: white;
+        text-align: center;
+        width: auto;
+        padding: 10px;
+    }
+
+    .navbar.scrolled {
+        width: 100%;
+        border-radius: 0;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1036,16 +1183,6 @@ h4,
         width: 95%;
         top: 15px;
         border-radius: 15px;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    /* Handled by hamburger menu */
-
-    .hamburger {
-        display: flex;
     }
 
     .hero-block {
@@ -1115,112 +1252,166 @@ h4,
     .footer-cols {
         grid-template-columns: 1fr;
     }
+
+    /* Section Spacing */
+    .section {
+        padding: 60px 0;
+    }
+
+    .section-intro {
+        margin-bottom: 40px;
+    }
+
+    /* Button adjustments */
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 14px 30px;
+        font-size: 13px;
+    }
+
+    .hero-btns {
+        padding: 0 20px;
+    }
+
+    /* Card refinements */
+    .insight-body, .event-details {
+        padding: 20px;
+    }
+
+    .insight-body h3, .event-details h3 {
+        font-size: 18px;
+    }
+
+    /* Expert photo size on mobile */
+    .expert-photo-large {
+        flex: 0 0 120px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .expert-bio h3 {
+        font-size: 20px;
+    }
+
+    .expert-role {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    /* Assoc photos */
+    .assoc-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 30px 20px;
+    }
+
+    .assoc-card img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* ADDITIONAL MOBILE REFINEMENTS */
+    .nav-brand {
+        gap: 10px;
+    }
+
+    .logo-wrap {
+        width: 45px;
+        height: 45px;
+        padding: 6px;
+    }
+
+    .name-main {
+        font-size: 20px;
+    }
+
+    .name-sub {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .hero-inner {
+        padding-top: 60px;
+    }
+
+    .hero-top-tag {
+        font-size: 10px;
+        letter-spacing: 3px;
+        margin-bottom: 15px;
+    }
+
+    .hero-paragraph {
+        font-size: 15px;
+        line-height: 1.6;
+        padding: 0 10px;
+    }
+
+    .foundation-heart .heart-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .heart-visual {
+        display: block !important;
+        margin-top: 40px;
+    }
+
+    .heart-img-stack {
+        height: 300px;
+    }
+
+    .heart-content .editorial-h {
+        font-size: 32px;
+    }
+
+    .heart-p {
+        font-size: 16px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-visual-overlay {
+        height: 350px;
+    }
+
+    .footer-layout {
+        gap: 40px;
+    }
+
+    .f-logo {
+        height: 60px;
+    }
+
+    .footer-branding h3 {
+        font-size: 22px;
+    }
+
+    /* Loader Mobile */
+    .loader-title {
+        font-size: 32px;
+        letter-spacing: 3px;
+    }
+
+    .loader-bar {
+        width: 150px;
+    }
+
+    /* BURGER ANIMATION */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
 }
 
-/* HAMBURGER STYLES */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 2000;
-}
-
-.hamburger span {
-    width: 30px;
-    height: 2px;
-    background: white;
-    transition: all 0.3s;
-}
-
-.navbar.scrolled .hamburger span {
-    background: var(--primary);
-}
-
-.nav-links.active {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: var(--primary);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-}
-
-.nav-links.active .n-link {
-    font-size: 24px;
-    color: white;
-}
-/* ===== ABOUT CAROUSEL ===== */
-.about-carousel {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 30px;
-}
-
-.about-carousel-track {
-    display: flex;
-    height: 100%;
-    transition: transform 0.6s ease-in-out;
-}
-
-.about-slide {
-    min-width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Arrows */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.4);
-    border: none;
-    color: white;
-    padding: 10px 14px;
-    cursor: pointer;
-    border-radius: 50%;
-    z-index: 10;
-}
-
-.carousel-btn.prev {
-    left: 15px;
-}
-
-.carousel-btn.next {
-    right: 15px;
-}
-
-/* Dots */
-.carousel-dots {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-}
-
-.carousel-dots span {
-    width: 8px;
-    height: 8px;
-    background: rgba(255,255,255,0.5);
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.carousel-dots .active {
-    background: var(--accent);
-}
-.carousel-btn:hover {
-    background: rgba(0,0,0,0.7);
-}
+
