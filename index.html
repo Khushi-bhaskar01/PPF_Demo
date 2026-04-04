@@ -15,6 +15,8 @@
 </head>
 
 <body>
+    <div id="custom-cursor" class="custom-cursor"></div>
+    <div id="cursor-follower" class="cursor-follower"></div>
 
     <div id="main-content">
         <!-- ===== REFINED NAVBAR ===== -->
@@ -62,9 +64,10 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-scroll-indicator">
-                <div class="mouse"><span></span></div>
-            </div>
+        </section>
+        <div class="hero-scroll-indicator">
+            <div class="mouse"><span></span></div>
+        </div>
         </section>
 
         <!-- ===== FEATURED REPORT CARD ===== -->
@@ -305,8 +308,26 @@
                     </ul>
                 </div>
                 <div class="about-visual-overlay">
-                    <img src="assets/DRR_GROUP_PHOTO.jpg" alt="Strategic Dialogue" class="about-accent-img">
-                </div>
+    <div class="about-carousel">
+        <div class="about-carousel-track" id="aboutTrack">
+            <img src="assets/1.jpg" class="about-slide" />
+            <img src="assets/2.jpg" class="about-slide" />
+            <img src="assets/3.jpg" class="about-slide" />
+            <img src="assets/4.jpg" class="about-slide" />
+        </div>
+
+        <!-- Arrows -->
+        <button class="carousel-btn prev" id="aboutPrev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next" id="aboutNext">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Dots -->
+        <div class="carousel-dots" id="aboutDots"></div>
+    </div>
+</div>
             </div>
         </section>
 
